@@ -1,0 +1,216 @@
+###############################################################################
+###############################################################################
+###                             README: Snippets                             ##
+###############################################################################
+###############################################################################
+
+###############################################################################
+###############################################################################
+## Created By: Matt Holsten, Tufts '23                                       ##
+## Created on: 2.25.2020                                                     ##
+## Current Version: 2.25.2020                                                ##
+## Purpose: To allow users to write more efficient code with the help of     ##
+##          code snippets for Atom.                                          ##
+## Acknowledgments: Mark Sheldon for Comp15 styles                           ##
+##                  Megan Monroe for Comp11 styles                           ##
+###############################################################################
+###############################################################################
+
+###############################################################################
+#  --------------------------
+# | NEW IN VERSION 2.25.2020 |
+#  --------------------------
+#   1. Everything.                                                             
+###############################################################################
+
+###############################################################################
+#  -------------------
+# | HELP?INSTRUCTIONS |
+#  -------------------
+#
+# How to Integreate These Snippets
+#     1. Click Atom in the menubar
+#     2. Click Snippets
+#     3. Copy this entire document and paste it into your snippets
+#        3.1. If you already use cpp snippets, copy and paste everyhing but then 
+#             delete the line which says "'.source.cpp':"
+#     4. Save the file and you're good to go.
+# 
+# *HOW TO USE SNIPPET*
+#     1. Type out prefix of snippet to use
+#     2. Hit tab
+#     3. Type inside of first field
+#     4. Hit tab to go to next possible field
+#     5. Rinse, repeat until hitting tab no longer moves fields
+# 
+# How To Add A Snippet
+#     1. Please keep reading before texting me to ask how to do it
+#     2. Read the other snippets I wrote to understand how they work, it's not 
+#        rocket science honestly.
+#     3. Go to bottom of document where I wrote "Add your snippets here"
+#     4. Copy-paste and replace fields, or, as suggested, type "snipns".
+# 
+# How to Edit Deprecated Snippet
+#     1. Go to that snippet's body attribute
+#     2. Find the text that is no longer appropriately written
+#     3. Replace that part.
+# 
+# How to Edit Snippet Prefix
+#     1. Go to that snippet's prefix attribute
+#     2. Change it. Did you really need me to hold your hand like this?
+# 
+# How To Temprarily Disable A Snippet
+#     1. Locate the unwanted snippet
+#     2. Change the attribute 'body' to '' (blank between single quotes)
+# 
+# How To Un-disable A Snippet... I knew you'd come back...
+#     1. Locate the unwanted snippet
+#     2. Change the attribute '' to 'body' (blank between single quotes)
+#
+# How To Delete A Snippet
+#     1. Locate the unwanted snippet
+#     2. Delete everything from the name of the snippet to the end of the body
+# 
+# Other Tips
+#     1. You can delete anywhere that says "${#:STUDENT_NAME}" and replace it 
+#        with your name (not in any fance ${...} thing, just put your name 
+#        where that entire big fancy thing with the ${...} is, including
+#        replacing the "$" and "{}" etc).
+#    1.1 You can replace ANY soft-coded element (i.e: ${...} ) with just words.
+#        Definitely do this to save time when actually running the snippets
+#        later on. Its mainly all soft coded to allow for the distribution to
+#        multiple different people, using it at differnt times, etc.
+# 
+###############################################################################
+
+###############################################################################
+#  ------------------
+# | LIST OF COMMANDS |
+#  ------------------
+#     1. cout
+#         - well formatted cout statement
+#           course: all
+#     2. cerr
+#         - well formatted cerr statement
+#           course: all
+#     3. for
+#         - well formatted for statement
+#           course: all
+#           note: you can change size_t to int if you want to
+#     4. contract
+#         - function contract
+#           course: all
+#           note: you can change size_t to int if you want to
+#     5. fileheader
+#         - file header, general for any comp class
+#           course: all
+#     6. fileheader15
+#         - file header, specific for comp15
+#           CRITICAL note: you can change size_t to int if you want to
+# 
+###############################################################################
+
+
+#  --------------
+# | C++ SNIPPETS |
+#  --------------
+'.source.cpp':
+
+    # 1. cout
+    'Cout':
+        'prefix': 'cout'
+        'body': 'cout << ${1:} ${2:<< endl};'
+    
+    # 2. cerr
+    'Cerr':
+        'prefix': 'cerr'
+        'body': 'cerr << "CERR: ${1:#}" << endl;'
+
+    # 3. for
+    'For Loop':
+        'prefix': 'for'
+        'body': 'for (size_t i = 0; i < ${1:/* count */}; i++) {\n\t${2:/* code */}\n}'
+
+    # 4. contract
+    'Function Contract':
+        'prefix': 'contract'
+        'body': """\
+/*
+ *  Name:      ${1:[NAME]}
+ *  Purpose:   ${2:[PURPOSE]}
+ *  Arguments: ${3:None}
+ *  Returns:   ${4:None}
+ *  Effects:   ${5:None}
+ *  Notes:     ${6:None}
+ */
+
+"""
+    # 5. fileheader
+    'File Header':
+        'prefix': 'fileheader'
+        'body': """\
+/*
+ * COMP${1:[CLASS_NUM]} ${2:[ASNMNT_TYPE]} ${3:[ASNMNT_NUM]}, ${4:[TERM]} ${5:[YEAR]}
+ * ${6:[FILE_NAME]}
+ * By: ${7:[STUDENT_NAME]}
+ * Completed: ${8:[MONTH]} ${9:[DAY]}, ${5:[YEAR]}
+ *
+ * ${10:[BREIF_FILE_DESCRIPTION]}
+ * Purpose: ${11:[PURPOSE_LINE_1]}
+ *          ${12:[LINE_2]}
+ *          ${13:[LINE_3]}
+ *          ${14:[LINE_4]}
+ */
+
+
+"""
+    
+    # 6. fileheader15
+    'File Header, Comp 15':
+        'prefix': 'fileheader15'
+        'body': """\
+/*
+ * COMP15 ${2:Homework} ${3:[HW_NUM]}, Spring 2020
+ * ${6:[FILE_NAME]}
+ * By: ${7:[STUDENT_NAME]}
+ * Completed: ${8:[MONTH]} ${9:[DAY]}, 2020
+ *
+ * ${10:[BREIF_FILE_DESCRIPTION]}
+ * Purpose: ${11:[PURPOSE_LINE_1]}
+ *          ${12:[LINE_2]}
+ *          ${13:[LINE_3]}
+ *          ${14:[LINE_4]}
+ */
+
+
+"""
+    #Disabling snippets that conflict (or are just annoying, thank me later..)
+    'Disable: printf':
+        'prefix':'printf'
+        'disabled':true
+    'Disable code: func':
+        'prefix':'func'
+        'disabled':true
+    'Disable code: int':
+        'prefix':'int'
+        'disabled':true
+
+
+###############################################################################
+#    ADD YOUR C++ SNIPPETS BELOW THIS BY TYPING "snipns" AND HITTING TAB      #
+###############################################################################
+
+    #Your Snippet
+    'Snippet Name':
+      'prefix': 'Snippet Trigger'
+      'body': 'Hello World!'
+
+    #Your Other Snippet
+    'Snippet Name 2':
+      'prefix': 'Snippet Trigger 2'
+      'body': 'Hello World 2!'
+
+    # etc.
+
+
+########################## END OF MH SNIPPETS FILE ############################
